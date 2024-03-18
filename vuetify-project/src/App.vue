@@ -1,13 +1,13 @@
 <template>
   <v-app>
     <v-main>
+      <HelloWorld />
     </v-main>
+
+    <AppFooter />
   </v-app>
 </template>
 
-<script>
-
-export default {
-  name: 'App',
-}
+<script setup>
+  //
 </script>
