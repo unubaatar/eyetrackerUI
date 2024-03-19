@@ -1,6 +1,9 @@
 <template>
   <v-app>
     <v-main>
+      <div>
+        {{ totalCoordinates }}
+      </div>
       <div
         style="background-color: blue; color: white; font-size: 24px"
         class="pa-2 text-center d-flex justify-center"
@@ -20,22 +23,27 @@
           <v-container>
             <div class="d-flex align-center">
               <span class="mr-4">X coordinate</span>
-              <v-text-field label="value"></v-text-field>
+              <v-text-field label="value" v-model="Coordinate.xCoordinate"></v-text-field>
             </div>
             <div class="d-flex align-center">
               <span class="mr-4">Y coordinate</span>
-              <v-text-field label="value"></v-text-field>
+              <v-text-field label="value" v-model="Coordinate.yCoordinate"></v-text-field>
             </div>
           </v-container>
           <div class="d-flex justify-space-around">
-            <v-btn color="green" width="150" opacity="2" class="mx-4"
+            <v-btn @click="addCoordinate()" color="green" width="150" opacity="2" class="mx-4"
               ><v-icon>mdi-content-save</v-icon></v-btn
             >
             <v-btn color="blue" width="150" opacity="2" class="mx-4"
               ><v-icon>mdi-pencil</v-icon></v-btn
             >
           </div>
-        </v-col>
+          <div class="d-flex my-2" v-for="item in totalCoordinates" :key="item">
+            <div class="px-2">xCoordinate:  <span> {{ item?.x }} </span> </div>
+            <div class="px-2">yCoordinate:  <span> {{ item?.y }} </span> </div>
+            <hr>
+          </div>
+        </v-col>  
       </v-row>
 
       <div
@@ -51,5 +59,22 @@
 <script>
 export default {
   name: "App",
+  data() {
+    return {
+      Coordinate: {
+        xCoordinate: 0,
+        yCoordinate: 0,
+      },
+      totalCoordinates: []
+    }
+  },
+  methods: {
+    addCoordinate() {
+      this.totalCoordinates.push( {
+        x: this.Coordinate.xCoordinate,
+        y: this.Coordinate.yCoordinate
+      } )
+    }
+  }
 };
 </script>
