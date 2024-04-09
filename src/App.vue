@@ -132,7 +132,7 @@
             <v-icon class="mr-2">mdi-eye</v-icon> Coordinate notes
           </h2>
           <hr class="mb-6" />
-          <div v-for="item in totalCoordinates">
+          <div v-for="item in totalCoordinates" :key="item">
             <v-hover>
               <template v-slot:default="{ isHovering, props }">
                 <v-card
